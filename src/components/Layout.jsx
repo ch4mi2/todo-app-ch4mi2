@@ -102,7 +102,7 @@ const Layout = ({ children }) => {
             <ListItem
               button
               key={item.text}
-              onClick={() => navigate.push(item.path)}
+              onClick={() => navigate(item.path)}
               className={
                 location.pathname === item.path ? classes.active : null
               }
