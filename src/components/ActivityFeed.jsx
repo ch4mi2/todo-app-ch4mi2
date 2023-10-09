@@ -11,7 +11,7 @@ import Paper from "@mui/material/Paper";
 
 const ActivityFeed = () => {
   return (
-    <Paper variant="outlined" square={false}>
+    <Paper variant="outlined" square={false} sx={{ borderRadius: "8px" }}>
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem>
         <Typography >Activity Feed</Typography>

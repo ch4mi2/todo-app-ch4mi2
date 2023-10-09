@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 const TaskPriorities = (props) => {
   const { tasks } = props;
 
-  // Initialize state for priority counts
   const [priorityCounts, setPriorityCounts] = useState({
     high: 0,
     medium: 0,
@@ -15,7 +14,6 @@ const TaskPriorities = (props) => {
   });
 
   useEffect(() => {
-    // Count tasks when tasks prop changes
     const countTasks = () => {
       const newPriorityCounts = {
         high: 0,
@@ -33,17 +31,13 @@ const TaskPriorities = (props) => {
         }
       }
 
-      // Log the new priority counts for debugging
       console.log("New Priority Counts:", newPriorityCounts);
-
-      // Update state with the new priority counts
       setPriorityCounts(newPriorityCounts);
     };
 
     countTasks();
   }, [tasks]);
 
-  // Prepare data for the PieChart
   const pieChartData = [
     { id: "high", value: priorityCounts.high, label: "High", color: "#EB5757" },
     {
@@ -57,23 +51,27 @@ const TaskPriorities = (props) => {
 
   return (
     <Paper variant="outlined" square={false} sx={{ borderRadius: "8px" }}>
-      <Typography>Task Priorities</Typography>
+      <div className="p-2">
+        <Typography>Task Priorities</Typography>
+      </div>
       <Divider />
-      <PieChart
-        series={[
-          {
-            data: pieChartData,
-            innerRadius: 20,
-            outerRadius: 50,
-            paddingAngle: 0,
-            cornerRadius: 0,
-            startAngle: 0,
-            endAngle: 360,
-          },
-        ]}
-        width={400}
-        height={200}
-      />
+      <div>
+        <PieChart
+          series={[
+            {
+              data: pieChartData,
+              innerRadius: 20,
+              outerRadius: 50,
+              paddingAngle: 0,
+              cornerRadius: 0,
+              startAngle: 0,
+              endAngle: 360,
+            },
+          ]}
+          width={300}
+          height={200}
+        />
+      </div>
     </Paper>
   );
 };
