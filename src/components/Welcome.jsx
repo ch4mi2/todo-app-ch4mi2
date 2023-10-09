@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import { useContext } from "react";
 import { Typography, Link } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Vector from "../assets/Vector.svg";
@@ -7,8 +7,6 @@ import { TaskContext } from "../context/TaskContext";
 
 const Welcome = () => {
   const { setWelcomeBanner } = useContext(TaskContext);
-
-
 
   return (
     <Paper
@@ -36,7 +34,12 @@ const Welcome = () => {
           <img src={Vector} alt="Vector" />
         </div>
         <div>
-          <button className="hover:bg-[#BC006D]" onClick={() => setWelcomeBanner(false)}><img src={Close} alt="Vector" /> </button>
+          <button
+            className="hover:bg-[#BC006D]"
+            onClick={() => setWelcomeBanner(false)}
+          >
+            <img src={Close} alt="Vector" />{" "}
+          </button>
         </div>
       </div>
     </Paper>

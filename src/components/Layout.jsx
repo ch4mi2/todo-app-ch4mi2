@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   page: {
     width: "100% !important",
     padding: "16px",
-    backgroundColor:"#FAFAFA"
+    backgroundColor: "#FAFAFA",
   },
   active: {
     fontWeight: "600 !important",
@@ -117,7 +117,7 @@ const Layout = ({ children }) => {
       </Drawer>
 
       {/* Page content */}
-      <div className={classes.page} >
+      <div className={classes.page}>
         <div className={classes.toolbar}></div>
         {children}
       </div>
