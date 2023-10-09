@@ -1,11 +1,12 @@
-import {useState, useEffect} from "react";
+import {useEffect , useContext} from "react";
 import Welcome from "../components/Welcome";
 import TaskPriorities from "../components/TaskPriorities";
 import ActivityFeed from "../components/ActivityFeed";
 import Tasks from "../components/Tasks";
+import { TaskContext } from "../context/TaskContext";
 
 const Dashboard = () => {
-  const [tasks, setTasks] = useState([]);
+  const { tasks, setTasks } = useContext(TaskContext);
   useEffect(() => {
     const getTasks = async () => {
       console.log("Fetching tasks");
