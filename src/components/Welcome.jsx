@@ -1,10 +1,15 @@
-import React from "react";
+import {useContext} from "react";
 import { Typography, Link } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Vector from "../assets/Vector.svg";
 import Close from "../assets/Close.svg";
+import { TaskContext } from "../context/TaskContext";
 
 const Welcome = () => {
+  const { setWelcomeBanner } = useContext(TaskContext);
+
+
+
   return (
     <Paper
       variant="outlined"
@@ -31,7 +36,7 @@ const Welcome = () => {
           <img src={Vector} alt="Vector" />
         </div>
         <div>
-          <img src={Close} alt="Vector" />
+          <button className="hover:bg-[#BC006D]" onClick={() => setWelcomeBanner(false)}><img src={Close} alt="Vector" /> </button>
         </div>
       </div>
     </Paper>

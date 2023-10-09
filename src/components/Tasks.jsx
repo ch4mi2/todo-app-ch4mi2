@@ -1,4 +1,4 @@
-import  { useState} from "react";
+import  { useState, useContext} from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,13 +12,15 @@ import PriorityHigh from '../assets/Priority-High.svg';
 import PriorityLow from '../assets/Priority-Low.svg';
 import PriorityMedium from '../assets/Priority-Medium.svg';
 import { format } from "date-fns";
+import Divider from '@mui/material/Divider';
+import { TaskContext } from "../context/TaskContext";
 
 
-const Tasks = (props) => {
-  const { tasks } = props;
+const Tasks = () => {
+  
   const [page, setPage] = useState(1); 
   const rowsPerPage = 8; 
-
+  const {tasks, setTasks} = useContext(TaskContext);
   
 
   const handleChangePage = (event, newPage) => {
@@ -51,9 +53,21 @@ const Tasks = (props) => {
     }
   }
 
+  const changeStatus = (task) => {
+    const updatedTask = {...task, completed: true}
+    const newTasks = tasks.map((task) => {
+      if (task.id === updatedTask.id) {
+        return updatedTask;
+      } else {
+        return task;
+      }
+    });
+    setTasks(newTasks);
+  }
+
   return (
     <Paper variant="outlined" square={false}>
-      <TableContainer>
+      <TableContainer className="flex-grow flex">
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -87,14 +101,14 @@ const Tasks = (props) => {
                     {format(new Date(task.createdAt), "MMM dd")}
                     </div>
                     </div>
-                    {task.completed === false ? <button href className="ml-7 text-[#BC006D]">Mark as done</button> : null}
+                    {task.completed === false ? <button onClick={() => changeStatus(task)} className="ml-7 text-[#BC006D]">Mark as done</button> : null}
                   </TableCell>
                 </TableRow>
               ))}
           </TableBody>
         </Table>
       </TableContainer>
-
+      <Divider />
       <Box display="flex" justifyContent="center" p={2}>
         <Pagination
           count={Math.ceil(tasks.length / rowsPerPage)}

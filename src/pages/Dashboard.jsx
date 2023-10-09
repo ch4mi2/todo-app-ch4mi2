@@ -1,4 +1,4 @@
-import {useEffect , useContext} from "react";
+import { useEffect, useContext } from "react";
 import Welcome from "../components/Welcome";
 import TaskPriorities from "../components/TaskPriorities";
 import ActivityFeed from "../components/ActivityFeed";
@@ -6,7 +6,7 @@ import Tasks from "../components/Tasks";
 import { TaskContext } from "../context/TaskContext";
 
 const Dashboard = () => {
-  const { tasks, setTasks } = useContext(TaskContext);
+  const { tasks, setTasks, welcomeBanner } = useContext(TaskContext);
   useEffect(() => {
     const getTasks = async () => {
       console.log("Fetching tasks");
@@ -28,17 +28,17 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen flex flex-col p-4 ">
       <div className="mb-4">
-        <Welcome />
+        {welcomeBanner && <Welcome />}
       </div>
 
-      <div className="flex flex-grow space-x-4">
-        <div className="w-full md:w-3/4">
-          <Tasks tasks={tasks} className="mb-4" />
+      <div className="flex flex-grow flex-col md:flex-row space-x-4">
+        <div className="w-full md:w-3/4 mb-4">
+          <Tasks />
         </div>
 
-        <div className="w-full md:w-1/4 flex flex-col space-y-4">
-          <ActivityFeed className="flex-grow mb-4" />
-          <TaskPriorities tasks={tasks} className="mb-4" />
+        <div className="w-full md:w-1/4 md:flex flex-col space-y-4">
+          <ActivityFeed />
+          <TaskPriorities tasks={tasks} />
         </div>
       </div>
     </div>
