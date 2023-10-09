@@ -31,7 +31,7 @@ const TaskPriorities = (props) => {
         }
       }
 
-      console.log("New Priority Counts:", newPriorityCounts);
+      console.log("Priority Counts:", newPriorityCounts);
       setPriorityCounts(newPriorityCounts);
     };
 

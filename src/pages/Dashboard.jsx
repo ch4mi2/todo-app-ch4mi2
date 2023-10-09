@@ -16,6 +16,7 @@ const Dashboard = () => {
       console.log(response);
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         setTasks(data);
       } else {
         console.log("Error fetching tasks");
@@ -27,9 +28,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col p-4 ">
-      <div className="mb-4">
-        {welcomeBanner && <Welcome />}
-      </div>
+      <div className="mb-4">{welcomeBanner && <Welcome />}</div>
 
       <div className="flex flex-grow flex-col md:flex-row space-x-4">
         <div className="w-full md:w-3/4 mb-4">
